@@ -111,7 +111,7 @@ variable "filtered_header_rule" {
     priority      = number
     header_value  = string
     action        = string
-    search_string = string
+    //search_string = string
   })
   description = "HTTP header to filter . Currently supports a single header type and multiple header values."
   default = {
@@ -119,7 +119,7 @@ variable "filtered_header_rule" {
     priority      = 1
     header_value  = ""
     action        = "block"
-    search_string = ""
+    //search_string = ""
   }
 }
 
