@@ -40,6 +40,7 @@ module "wafv2" {
     header_value = "host"
     priority     = 1
     action       = "allow"
+    search_string = ""
   }
 
   ip_sets_rule = [
