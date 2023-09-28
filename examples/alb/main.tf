@@ -46,13 +46,13 @@ module "wafv2" {
   ip_sets_rule = [
     {
       name       = var.test_name
-      priority   = 5
+      priority   = 15
       action     = "count"
       ip_set_arn = aws_wafv2_ip_set.ipset.arn
     },
     {
       name       = "block-all-ips"
-      priority   = 6
+      priority   = 16
       action     = var.enable_block_all_ips ? "block" : "count"
       ip_set_arn = aws_wafv2_ip_set.block_all_ips.arn
     }
@@ -60,7 +60,7 @@ module "wafv2" {
 
   ip_rate_based_rule = {
     name : "ip-rate-limit",
-    priority : 7,
+    priority : 17,
     action : var.enable_ip_rate_limit ? "block" : "count",
     limit : 100
   }
@@ -68,7 +68,7 @@ module "wafv2" {
   ip_rate_url_based_rules = [
     {
       name : "ip-rate-foo-limit",
-      priority : 8,
+      priority : 18,
       action : var.enable_rate_limit_url_foo ? "block" : "count",
       limit : 100,
       search_string : "/foo/",
@@ -76,7 +76,7 @@ module "wafv2" {
     },
     {
       name : "ip-rate-bar-limit",
-      priority : 9,
+      priority : 19,
       action : "block",
       search_string : "/bar/",
       positional_constraint : "STARTS_WITH"
@@ -89,7 +89,7 @@ module "wafv2" {
       name : aws_wafv2_rule_group.block_countries.name,
       arn : aws_wafv2_rule_group.block_countries.arn,
       override_action : "none",
-      priority : 11
+      priority : 21
     }
   ]
 }
