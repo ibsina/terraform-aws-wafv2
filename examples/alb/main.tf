@@ -38,7 +38,7 @@ module "wafv2" {
       "test2"
     ]
     header_value = "host"
-    priority     = 1
+    priority     = 4
     action       = "allow"
     search_string = ""
   }
